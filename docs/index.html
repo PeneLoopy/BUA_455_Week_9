@@ -126,6 +126,8 @@ In HW 5 - Part 1:
 - I provide R code in the dashboard template to complete incomplete
 
 - I also provide code to complete this task using `pivot_wider` and `pivot_longer` in an Optional R Script.
+
+- Not needed for Netflix Movie data even though these data are not fully complete.
   
 ---
   
@@ -302,7 +304,7 @@ my_gtcars &lt;- read_csv("gt_cars.csv", show_col_types = F) |&gt; glimpse()
 my_gtcars &lt;- read_csv("gt_cars.csv", show_col_types = F) |&gt;
   select(year, bdy_style, drivetrain) |&gt;
   group_by(year, bdy_style, drivetrain) |&gt;
-  summarize(n = n())                              #&gt;&gt; new command n()
+  summarize(n = n())                              # new command n()
 head(my_gtcars)                                   # incomplete dataset
 ```
 
@@ -413,7 +415,7 @@ my_gtcars &lt;- my_gtcars |&gt;
 
 ```r
 my_gtcars &lt;- my_gtcars |&gt; select(year, bdy_style, total) |&gt;
-  mutate(bdy_style = str_to_title(bdy_style)) |&gt;    # Capitlize first letters
+  mutate(bdy_style = str_to_title(bdy_style)) |&gt;    # Capitalize first letters
   glimpse()
 ```
 

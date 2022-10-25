@@ -1,40 +1,26 @@
 ---
-title: "BUA 455 - Week 9"
-subtitle: "HW 5 - Part 1 - Data Management Details" 
+title: "Week 9"
 author: "Penelope Pooler Eisenbies"
-date: '`r Sys.Date()`'
-output:
-  xaringan::moon_reader:
-    seal: false
-    css: xaringan-themer.css
-    nature:
-      slideNumberFormat: "%current%/%total%" 
-      highlightStyle: tomorrow-night-bright
-      highlightLines: true
-      ratio: 16:9
-      countIncrementalSlides: true
-      keep_md: true
+date: "`r Sys.Date()`"
+output: 
+  html_document: 
+    code_folding: hide
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
 ---
 
-```{r setup, include=FALSE, echo=FALSE}
-options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(
-  fig.retina=2,
-  #out.width = "75%",
-  #out.height = "50%",
-  htmltools.preserve.raw = FALSE,      # needed for windows
-  scipen=100,                          # suppresses scientific notation
-  getSymbols.warning4.0 = FALSE,       # suppresses getSymbols warnings
-  cache = FALSE,
-  echo = TRUE,
-  hiline = TRUE,
-  message = FALSE, 
-  warning = FALSE
-)
+```{r setup, include=TRUE}
 
+# this line specifies options for default options for all R Chunks
+knitr::opts_chunk$set(echo=T, 
+                      highlight=T)
 
-# install helper package (pacman)
-# pacman loads and installs other packages, if needed
+# suppress scientific notation
+options(scipen=100,
+        getSymbols.warning4.0 = FALSE)
+
+# install helper package (pacman), if needed
 if (!require("pacman")) install.packages("pacman", repos = "http://lib.stat.cmu.edu/R/CRAN/")
 
 # install and load required packages
@@ -46,114 +32,8 @@ pacman::p_load(pacman,tidyverse, ggthemes, magrittr, knitr, lubridate,
 # verify packages (comment out in finished documents)
 p_loaded()
 
-
 ```
 
-```{r xaringan-themer, include=FALSE, warning=FALSE}
-library(xaringanthemer)
-
-palette <- c(
-  SU_Orange1        = "#F76900",
-  SU_Orange2        = "#FF8E00",
-  SU_Red_Orange     = "#FF431B",
-  SU_Blue1          = "#000E54",
-  SU_Blue2          = "#203299",
-  SU_Light_Blue     = "#2B72D7",
-  SU_White          = "#FFFFFF",
-  SU_Light_Gray     = "#ADB3B8",
-  SU_Medium_Gray    = "#707780",
-  SU_Black          = "#000000", 
-  
-  steel_blue        = "#4682B4",
-  corn_flower_blue  = "#6495ED",
-  deep_sky_blue     = "#00BFFF",
-  dark_magenta      = "#8B008B",
-  medium_orchid     = "#BA55D3",
-  lime_green        = "#32CD32",
-  light_sea_green   = "#20B2AA",
-  chartreuse        = "#7FFF00",
-  orange_red        = "#FF4500",
-  white_smoke       = "#F5F5F5",
-  dark_cyan         = "#008B8B",
-  light_steel_blue  = "#B0C4DE",
-  indigo            = "#4B0082",
-  ivory             = "#FFFFF0",
-  light_slate_grey  = "#778899",
-  linen             = "#FAF0E6",
-  steel_blue        = "#4682B4",
-  blue_violet       = "#8A2BE2",
-  dodger_blue       = "#1E90FF",
-  light_blue        = "#ADD8E6",
-  azure             = "#F0FFFF",
-  lavender          = "#E6E6FA")
-
-primary_color = "#4682B4"                # steel_blue
-secondary_color = "#778899"              # light_slate_grey
-white_color = "#FFFFF0"                  # ivory
-black_color = "#000080"                  # navy
-
-style_duo_accent(
-  primary_color = primary_color,
-  secondary_color = secondary_color,
-  white_color = white_color,
-  black_color = black_color,
-  text_color = black_color,
-  header_color = primary_color,
-  background_color = white_color,
-  code_inline_background_color = "#E6E6FA", # lavender
-  link_color = "#1E90FF",                   # dodger_blue
-  code_inline_color = "#4B0082",            # indigo
-  text_bold_color = "#8B008B",              # dark_magenta
-  header_font_google = google_font("Open Sans"),
-  text_font_google = google_font("Open Sans"),
-  code_font_google = google_font("Source Code Pro"),
-  colors = palette
-)
-
-
-```
-
-```{r xaringan-panelset, echo=FALSE}
-xaringanExtra::use_panelset()
-```
-
-```{r xaringan-tile-view, echo=FALSE}
-xaringanExtra::use_tile_view()
-```
-
-```{r xaringan-fit-screen, echo=FALSE}
-xaringanExtra::use_fit_screen()
-```
-
-```{r xaringan-tachyons, echo=FALSE}
-xaringanExtra::use_tachyons()
-```
-
-```{r xaringan-animate-css, echo=FALSE}
-xaringanExtra::use_animate_css()
-```
-
-```{r xaringan-animate-all, echo=FALSE}
-#xaringanExtra::use_animate_all("slide_up")
-```
-
-background-image: url("docs_files/images/sloth_faded.png")
-background-size: cover
-
-class: bottom, right
-
-## BUA 455 - Week 9
-
-### "HW 5 - Part 1 - Data Management Details" 
-
-<br>
-
-
-#### Penelope Pooler Eisenbies
-
-#### `r Sys.Date()`
-
-[Wikipedia Sloth Page](https://en.wikipedia.org/wiki/Sloth)
 
 ---
 
@@ -225,7 +105,7 @@ Thursday I will meet with each group after reading and providing feedback on pro
 
 In HW 5 - Part 1:
 
-- I provide R code in the dashboard template to complete incomplete
+- I provide R code in the dashboard example to complete incomplete data
 
 - I also provide code to complete this task using `pivot_wider` and `pivot_longer` in an Optional R Script.
 
@@ -235,7 +115,6 @@ In HW 5 - Part 1:
   
 ### Skills Covered in HW 5 - Part 1
 
-.pull-left[
 
 - **Panel 1 - Interactive Time Series Plots** 
 
@@ -255,14 +134,6 @@ In HW 5 - Part 1:
 
    - [Using links to cite data sources](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown.pdf)
 
-
-]
-
-.pull-right[
-
-![](docs_files/images/owl.png)
-
-]
 
 ---
 
@@ -296,8 +167,6 @@ In HW 5 - Part 1:
 
 ### Skills Covered in HW 5 - Part 1
 
-.pull-left[
-
 - **Panel 2 - More about the Bar Plot and Summary Table**
     
    - Be aware of how the barplot is specified in the `geom_barplot ` statement.
@@ -313,21 +182,9 @@ In HW 5 - Part 1:
    - Note that for projects, you can refine your table further, if needed, using commands from `kableExtra` package.
 
 
-]
-
-.pull-right[
-
-![](docs_files/images/beaver.png)
-
-]
-  
-
-  
 ---
 
 ### Skills Covered in HW 5 - Part 1
-
-.pull-left[
 
 - **Panel 3 - Area Plot**
 
@@ -345,15 +202,6 @@ In HW 5 - Part 1:
     
      - `scale_fill_brewer` used to specify same palette as Panel 2
 
-]
-
-.pull-right[
-
-![](docs_files/images/owl.png)
-]
-    
-
-    
 ---
 
 ### Week 9 In-class Exercises 
@@ -368,6 +216,7 @@ In HW 5 - Part 1:
 my_gtcars <- read_csv("gt_cars.csv", show_col_types = F) |> glimpse()
 
 ```
+
 
 ---
 
@@ -387,9 +236,11 @@ my_gtcars <- read_csv("gt_cars.csv", show_col_types = F) |>
   group_by(year, bdy_style, drivetrain) |>
   summarize(n = n())                              # new command n()
 head(my_gtcars)                                   # incomplete dataset
+
 ```
 
 ---
+
 ### Week 9 In-class Exercises 
 
 **`4.`** Use pivot_wider to create a column for each drivetrain
@@ -401,6 +252,7 @@ my_gtcars <- my_gtcars |>
   pivot_wider(id_cols= c("year", "bdy_style"), names_from = drivetrain, values_from = n)
 my_gtcars[is.na(my_gtcars)] <- 0  # convert missing values to 0
 head(my_gtcars)
+
 ```
 
 ---
@@ -411,8 +263,6 @@ head(my_gtcars)
 
 **`6.`** Sum across rows to total data from both drive trains
 
-.pull-left[
-
 - Q1: What is the command to sum across rows?
    
   - `drivetrain` will be dropped in next step; 
@@ -422,18 +272,10 @@ head(my_gtcars)
 ```{r sum accross rows to create total column}
 my_gtcars <- my_gtcars |>
    mutate(total = sum(c_across(rwd:awd))) 
-```
 
-]
-
-.pull-right[
-
-```{r show data with total, echo=F}
-my_gtcars
 ```
 
 
-]
 
 ---
 
@@ -464,99 +306,11 @@ my_gtcars <- my_gtcars |> select(year, bdy_style, total) |>
 
 **`8.`** Fill in dataset by using pivot_wider and then pivot longer
 
-.panelset[
-
-.panel[.panel-name[**Incomplete Data**]
-
-.pull-left[
-
-```{r incomplete data, echo=F}
-my_gtcars
-
-```
-
-]
-
-.pull-right[
-
-![](docs_files/images/beaver.png)
-
-]
-
-
-]
-
-.panel[.panel-name[**`pivot_wider`**]
-
-Reshaping Data creates a 4x4 matrix with NAs
-
-```{r pivot wider to reshape and include NAs}
-(my_gtcars1 <- my_gtcars |>
-   pivot_wider(id_cols= year, names_from = bdy_style, values_from = total))
-```
-
-]
-
-.panel[.panel-name[**`pivot_longer`**]
-
-.pull-left[
-
-Reshaping data back to long format keeps NAs, categories with no observations
-
-```{r pivot longer to long form with NAs}
-my_gtcars1 <- my_gtcars1 |>
-   pivot_longer(cols=Coupe:Sedan, 
-                names_to = "bdy_style", 
-                values_to = "total")
-
-```
-
-]
-
-.pull-right[
-
-```{r long format with NAs, echo=F}
-my_gtcars1
-```
-
-
-]
-
-
-
-]
-
-.panel[.panel-name[**Replace All NAs with 0**]
-
-.pull-left[
-
-These data values are number of observations so NAs can be replaced with 0s
-
-```{r convert NAs to 0s}
-my_gtcars1[is.na(my_gtcars1)] <- 0
-```
-
-]
-
-.pull-right[
-
-```{r show final dataset, echo=FALSE}
-my_gtcars1
-```
-
-]
-
-]
-
-.panel[.panel-name[**Complete Code**]
-
-.pull-left[
-
 Complete code is relatively short and efficient.
 
 - Factors should be created **AFTER** this process, if needed.
 
-```{r complete conversion code, eval=FALSE}
+```{r complete conversion code}
 
 my_gtcars1 <- my_gtcars |>
   
@@ -569,31 +323,17 @@ my_gtcars1 <- my_gtcars |>
                 values_to = "total")
 
 my_gtcars1[is.na(my_gtcars1)] <- 0
+my_gtcars1                              # show final dataset
+
 ```
-
-]
-
-.pull-right[
-
-```{r reshow final dataset, echo=FALSE}
-my_gtcars1
-```
-
-]
-
-]
-
-]
-
-
 
 ---
 
 ### Comparison of Complete and Incomplete Data Area Plots
 
-```{r area plot code, echo=F, fig.dim=c(15,7)}
+```{r area plot code}
 
-gt_car_area_plot <- my_gtcars |>
+(gt_car_area_plot <- my_gtcars |>
   ggplot() +
   geom_area(aes(x=year, y=total, fill=bdy_style)) +
   theme_classic() +
@@ -603,17 +343,9 @@ gt_car_area_plot <- my_gtcars |>
   labs(x="Year", y="Number of cars", fill="",
        title="Number of Cars of Each Body Type",
        subtitle="Incomplete Data for 2014 - 2017",
-       caption="Data Source: https://CRAN.R-project.org/package=gt") + 
-  theme(plot.title = element_text(size = 20),                    
-        plot.subtitle = element_text(size = 15),
-        axis.title = element_text(size=18),
-        axis.text = element_text(size=15),
-        plot.caption = element_text(size = 10),
-        legend.text = element_text(size = 12),
-        panel.border = element_rect(colour = "lightgrey", fill=NA, size=2),
-        plot.background = element_rect(colour = "darkgrey", fill=NA, size=2))
+       caption="Data Source: https://CRAN.R-project.org/package=gt"))
 
-gt_car_area_plot1 <- my_gtcars1 |>
+(gt_car_area_plot1 <- my_gtcars1 |>
   ggplot() +
   geom_area(aes(x=year, y=total, fill=bdy_style)) +
   theme_classic() +
@@ -623,31 +355,14 @@ gt_car_area_plot1 <- my_gtcars1 |>
   labs(x="Year", y="Number of cars", fill="",
        title="Number of Cars of Each Body Type",
        subtitle="Complete Data for 2014 - 2017",
-       caption="Data Source: https://CRAN.R-project.org/package=gt") + 
-  theme(plot.title = element_text(size = 20),                    
-        plot.subtitle = element_text(size = 15),
-        axis.title = element_text(size=18),
-        axis.text = element_text(size=15),
-        plot.caption = element_text(size = 10),
-        legend.text = element_text(size = 12),
-        panel.border = element_rect(colour = "lightgrey", fill=NA, size=2),
-        plot.background = element_rect(colour = "darkgrey", fill=NA, size=2))
-
-grid.arrange(gt_car_area_plot, gt_car_area_plot1, ncol=2)
+       caption="Data Source: https://CRAN.R-project.org/package=gt"))
 
 ```
 
 ---
 
-background-image: url("docs_files/images/tired_panda_faded.png")
-background-size: cover
-
-
-.pull-left[
-
 ### **Key Points from Week 9**
 
-.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph2[
 
 **Data Management Skills - Some Review and Some New**
 
@@ -667,23 +382,5 @@ background-size: cover
   
   - Managing and presenting geographic data in choropleth maps.
 
-]
 
-]
-
-.pull-right[
-
-
-.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3[
 **You may submit an 'Engagement Question or Comment' about Week 9 lecture until Thursday, 10/25, at midnight on Blackboard.**
-]
-
-
-]
-
-    
-    
-    
-
-
-
