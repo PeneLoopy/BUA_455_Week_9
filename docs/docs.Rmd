@@ -1,7 +1,6 @@
 ---
 title: "BUA 455 - Week 9"
-
-subtitle: "HW 5 - Part 1 - Data Management Details" "  
+subtitle: "HW 5 - Part 1 - Data Management Details" 
 author: "Penelope Pooler Eisenbies"
 date: '`r Sys.Date()`'
 output:
@@ -40,8 +39,9 @@ if (!require("pacman")) install.packages("pacman", repos = "http://lib.stat.cmu.
 
 # install and load required packages
 # pacman should be first package in parentheses and then list others
-pacman::p_load(pacman, tidyverse, gridExtra, magrittr, lubridate, 
-               knitr, kableExtra, tidyquant, highcharter, dygraphs)
+pacman::p_load(pacman,tidyverse, ggthemes, magrittr, knitr, lubridate, 
+               tidyquant, highcharter, dygraphs, gridExtra, RColorBrewer, 
+               flexdashboard)
 
 # verify packages (comment out in finished documents)
 p_loaded()
@@ -156,4 +156,532 @@ class: bottom, right
 [Wikipedia Sloth Page](https://en.wikipedia.org/wiki/Sloth)
 
 ---
+
+### Project Meetings
+
+Thursday I will meet with each group after reading and providing feedback on proposal rough draft.
+
+- Order will be determined **MOSTLY** randomly.
+
+  - Schedule will be posted tomorrow.
+  
+  - If your class schedule or commitments mean that you can not be here exactly at 9:30 or you have to leave class early, please let me know **TODAY**.
+  
+<br>
+
+- Come prepared to answer questions about your proposal and data sources.
+  
+- Also come prepared with questions for me.
+  
+- I will provide suggestions about 
+  
+  - How to focus or expand your plans
+    
+  - Additional data sources for your project 
+    
+  - Suggestions for dashboard visualizations or summaries
+  that are good fit for your plan
+  
+- If needed, I will follow up with links to additional resources that will be helpful.
+    
+---
+    
+### Data Mgmt for HW 5 - Part 1 Dashboard 
+
+#### New Skills introduced last week
+
+- Using `ifelse` to create a categorical variable
+
+  - Can be combined with `factor` to create a factor variable
+  
+  - Factor variables are useful for plots, tables, and analyses
+  
+    - Character (text variable) are easier to work with when managing and manipulating data.
+    - Factor variables are preferred when plotting or presenting data in tables.
+  
+- Modifying and cleaning text variables
+
+  - `tolower` and `toupper`
+  
+  - `str_trim` (as well as `str_squish` and `str_pad`)
+  
+  - `gsub` and `ifelse`
+  
+---
+
+### Data Mgmt for HW 5 - Part 1 Dashboard 
+
+#### Review of Previous Data Mgmt skills used
+
+- `filter` and `select`
+  
+- `group_by` and `summarize`
+  
+- `pivot_wider` and `pivot_longer`
+
+<br>
+
+**Note:** Today we will cover how to use `pivot_wider` and `pivot_longer` to ***complete*** and incomplete dataset.
+
+In HW 5 - Part 1:
+
+- I provide R code in the dashboard template to complete incomplete
+
+- I also provide code to complete this task using `pivot_wider` and `pivot_longer` in an Optional R Script.
+  
+---
+  
+### Skills Covered in HW 5 - Part 1
+
+.pull-left[
+
+- **Panel 1 - Interactive Time Series Plots** 
+
+   - Review of importing and plotting xts datasets
+  
+   - `xts` stands for extensible time series
+  
+   - Multiple `xts` plot objects can be displayed using `hw_grid`
+  
+- You should also review (Not in Panel 1):
+
+   - Converting a `tibble` to an `xts` 
+  
+   - Converting an `xts` to a `tibble`
+  
+- New Skills
+
+   - [Using links to cite data sources](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown.pdf)
+
+
+]
+
+.pull-right[
+
+![](docs_files/images/owl.png)
+
+]
+
+---
+
+### Skills Covered in HW 5 - Part 1
+  
+- **Panel 2 - Grouped Stacked Barplots with Facets and Summary Table**
+
+  - Review of Previously Covered Skills
+  
+     - `pivot_longer`to reshape `nflx_mv` data
+    
+     - `ifelse` is used to simplify `release period` data
+
+     - `mutate` and `factor` is used to create two factor variables with specified levels
+    
+     - `filter` is used to subset the data to release periods with enough data.
+  
+  - New Skills - Panel 2 Plot is a grouped stack bar plot that uses a new option, `facet_grid`
+    
+     - `facet_grid(~release_period)` specifies side-by-side plots, 1 for each release period.
+    
+     - `scale_fill_brewer(palette = "Spectral")` allows the user to specify a color palette
+    
+     - Theme and palette options (Optional Extra Credit)
+    
+        - [ggtheme options](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)
+      
+        - [Palette options](http://www.sthda.com/english/wiki/colors-in-r#use-wes-anderson-color-palettes) and another link with a [comprehensive list of palettes](https://github.com/EmilHvitfeldt/r-color-palettes)
+      
+---
+
+### Skills Covered in HW 5 - Part 1
+
+.pull-left[
+
+- **Panel 2 - More about the Bar Plot and Summary Table**
+    
+   - Be aware of how the barplot is specified in the `geom_barplot ` statement.
+  
+   - Stacked bars were used to save space.
+    
+- Panel 2 Table
+  
+   - The skills used to create to select and summarize data are review.
+    
+   - The table is presented using `kable` (also review).
+    
+   - Note that for projects, you can refine your table further, if needed, using commands from `kableExtra` package.
+
+
+]
+
+.pull-right[
+
+![](docs_files/images/beaver.png)
+
+]
+  
+
+  
+---
+
+### Skills Covered in HW 5 - Part 1
+
+.pull-left[
+
+- **Panel 3 - Area Plot**
+
+  - Useful new Skill:
+  
+     - summing across rows: `mutate(total = sum(c_across(comedies:kids)))`
+    
+     - sometimes used with `rowwise()` and `ungroup` but that is not needed here
+    
+  - Area Plot (Review)
+  
+     - Similar to line plot but uses `geom_area(aes(x = , y = , fill=))`
+    
+     - `scale_x_continuous(breaks = )` used to show all years in data
+    
+     - `scale_fill_brewer` used to specify same palette as Panel 2
+
+]
+
+.pull-right[
+
+![](docs_files/images/owl.png)
+]
+    
+
+    
+---
+
+### Week 9 In-class Exercises 
+
+- This short exercise demonstrates why a **complete** dataset with all combination levels is needed for area plots.
+
+- These steps are similar to the Optional R Script for HW 5 - Part 1 
+
+**`1.`** Import gt_cars dataset and examine the data
+
+```{r import raw data and examine them}
+my_gtcars <- read_csv("gt_cars.csv", show_col_types = F) |> glimpse()
+
+```
+
+---
+
+### Week 9 In-class Exercises 
+
+**`2.`** Select the following variables
+
+   - year, bdy_style (body style), drivetrain (drive train)
+
+**`3.`** Group data by year, body style, and drive train and count number of observations
+
+   - command to summarize number of observations is `n()`
+
+```{r select vars then group data and summarize}
+my_gtcars <- read_csv("gt_cars.csv", show_col_types = F) |>
+  select(year, bdy_style, drivetrain) |>
+  group_by(year, bdy_style, drivetrain) |>
+  summarize(n = n())                              #>> new command n()
+head(my_gtcars)                                   # incomplete dataset
+```
+
+---
+### Week 9 In-class Exercises 
+
+**`4.`** Use pivot_wider to create a column for each drivetrain
+
+**`5.`** Replace missing values with 0
+
+```{r reshape and replace NAs with 0s}
+my_gtcars <- my_gtcars |> 
+  pivot_wider(id_cols= c("year", "bdy_style"), names_from = drivetrain, values_from = n)
+my_gtcars[is.na(my_gtcars)] <- 0  # convert missing values to 0
+head(my_gtcars)
+```
+
+---
+
+### Week 9 In-class Exercises (L15 - Q1)
+
+***PointSolutions Session ID: bua455s22***
+
+**`6.`** Sum across rows to total data from both drive trains
+
+.pull-left[
+
+- Q1: What is the command to sum across rows?
+   
+  - `drivetrain` will be dropped in next step; 
+  
+  - included here to demonstrate sum across
+   
+```{r sum accross rows to create total column}
+my_gtcars <- my_gtcars |>
+   mutate(total = sum(c_across(rwd:awd))) 
+```
+
+]
+
+.pull-right[
+
+```{r show data with total, echo=F}
+my_gtcars
+```
+
+
+]
+
+---
+
+### Week 9 In-class Exercises (L15 - Q2 & Q3)
+
+***PointSolutions Session ID: bua455s22***
+
+**`7.`** Select year, body style and total
+
+- Q2: How many observations do you have?
+   
+- Q3: If every body style was made in every year, how many observations would you have?
+
+  - There are 4 body styles and 4 years represented in these data
+  
+- **Also in this chunk:** Command to capitilize first letter of words in a string: `str_to_title`
+   
+```{r select vars of interest and examine}
+
+my_gtcars <- my_gtcars |> select(year, bdy_style, total) |>
+  mutate(bdy_style = str_to_title(bdy_style)) |>    # Capitlize first letters
+  glimpse()
+
+```
+
+
+---
+
+**`8.`** Fill in dataset by using pivot_wider and then pivot longer
+
+.panelset[
+
+.panel[.panel-name[**Incomplete Data**]
+
+.pull-left[
+
+```{r incomplete data, echo=F}
+my_gtcars
+
+```
+
+]
+
+.pull-right[
+
+![](docs_files/images/beaver.png)
+
+]
+
+
+]
+
+.panel[.panel-name[**`pivot_wider`**]
+
+Reshaping Data creates a 4x4 matrix with NAs
+
+```{r pivot wider to reshape and include NAs}
+(my_gtcars1 <- my_gtcars |>
+   pivot_wider(id_cols= year, names_from = bdy_style, values_from = total))
+```
+
+]
+
+.panel[.panel-name[**`pivot_longer`**]
+
+.pull-left[
+
+Reshaping data back to long format keeps NAs, categories with no observations
+
+```{r pivot longer to long form with NAs}
+my_gtcars1 <- my_gtcars1 |>
+   pivot_longer(cols=Coupe:Sedan, 
+                names_to = "bdy_style", 
+                values_to = "total")
+
+```
+
+]
+
+.pull-right[
+
+```{r long format with NAs, echo=F}
+my_gtcars1
+```
+
+
+]
+
+
+
+]
+
+.panel[.panel-name[**Replace All NAs with 0**]
+
+.pull-left[
+
+These data values are number of observations so NAs can be replaced with 0s
+
+```{r convert NAs to 0s}
+my_gtcars1[is.na(my_gtcars1)] <- 0
+```
+
+]
+
+.pull-right[
+
+```{r show final dataset, echo=FALSE}
+my_gtcars1
+```
+
+]
+
+]
+
+.panel[.panel-name[**Complete Code**]
+
+.pull-left[
+
+Complete code is relatively short and efficient.
+
+- Factors should be created **AFTER** this process, if needed.
+
+```{r complete conversion code, eval=FALSE}
+
+my_gtcars1 <- my_gtcars |>
+  
+   pivot_wider(id_cols= year, 
+               names_from = bdy_style, 
+               values_from = total) |>
+  
+   pivot_longer(cols=Coupe:Sedan, 
+                names_to = "bdy_style", 
+                values_to = "total")
+
+my_gtcars1[is.na(my_gtcars1)] <- 0
+```
+
+]
+
+.pull-right[
+
+```{r reshow final dataset, echo=FALSE}
+my_gtcars1
+```
+
+]
+
+]
+
+]
+
+
+
+---
+
+### Comparison of Complete and Incomplete Data Area Plots
+
+```{r area plot code, echo=F, fig.dim=c(15,7)}
+
+gt_car_area_plot <- my_gtcars |>
+  ggplot() +
+  geom_area(aes(x=year, y=total, fill=bdy_style)) +
+  theme_classic() +
+  theme(legend.position="bottom") +
+  scale_x_continuous(breaks=seq(2014,2017,1)) +
+  scale_fill_brewer(palette = "Spectral") +
+  labs(x="Year", y="Number of cars", fill="",
+       title="Number of Cars of Each Body Type",
+       subtitle="Incomplete Data for 2014 - 2017",
+       caption="Data Source: https://CRAN.R-project.org/package=gt") + 
+  theme(plot.title = element_text(size = 20),                    
+        plot.subtitle = element_text(size = 15),
+        axis.title = element_text(size=18),
+        axis.text = element_text(size=15),
+        plot.caption = element_text(size = 10),
+        legend.text = element_text(size = 12),
+        panel.border = element_rect(colour = "lightgrey", fill=NA, size=2),
+        plot.background = element_rect(colour = "darkgrey", fill=NA, size=2))
+
+gt_car_area_plot1 <- my_gtcars1 |>
+  ggplot() +
+  geom_area(aes(x=year, y=total, fill=bdy_style)) +
+  theme_classic() +
+  theme(legend.position="bottom") +
+  scale_x_continuous(breaks=seq(2014,2017,1)) +
+  scale_fill_brewer(palette = "Spectral") +
+  labs(x="Year", y="Number of cars", fill="",
+       title="Number of Cars of Each Body Type",
+       subtitle="Complete Data for 2014 - 2017",
+       caption="Data Source: https://CRAN.R-project.org/package=gt") + 
+  theme(plot.title = element_text(size = 20),                    
+        plot.subtitle = element_text(size = 15),
+        axis.title = element_text(size=18),
+        axis.text = element_text(size=15),
+        plot.caption = element_text(size = 10),
+        legend.text = element_text(size = 12),
+        panel.border = element_rect(colour = "lightgrey", fill=NA, size=2),
+        plot.background = element_rect(colour = "darkgrey", fill=NA, size=2))
+
+grid.arrange(gt_car_area_plot, gt_car_area_plot1, ncol=2)
+
+```
+
+---
+
+background-image: url("docs_files/images/tired_panda_faded.png")
+background-size: cover
+
+
+.pull-left[
+
+### **Key Points from Week 9**
+
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph2[
+
+**Data Management Skills - Some Review and Some New**
+
+- Some Key New Data Management Skills:
+
+  - summarizing number of observations by category using `n()`
+  
+  - Using `sum(c_across())` to sum across rows
+  
+  - Knowing how to ***complete*** data that is incomplete 
+
+- HW 5 - Part 1 is due Wedneday, 11/2.
+
+- Next week 
+
+  - Practice questions for Quiz 2 (Quiz is on Thu. 11/10)
+  
+  - Managing and presenting geographic data in choropleth maps.
+
+]
+
+]
+
+.pull-right[
+
+
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3[
+**You may submit an 'Engagement Question or Comment' about Week 9 lecture until Thursday, 10/25, at midnight on Blackboard.**
+]
+
+
+]
+
+    
+    
+    
+
+
 

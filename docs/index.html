@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>BUA 455 - Week 9</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Penelope Pooler Eisenbies" />
+    <meta name="date" content="2022-10-25" />
+    <script src="docs_files/header-attrs/header-attrs.js"></script>
+    <link href="docs_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="docs_files/panelset/panelset.js"></script>
+    <link href="docs_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="docs_files/tile-view/tile-view.js"></script>
+    <script src="docs_files/xaringanExtra_fit-screen/fit-screen.js"></script>
+    <link href="docs_files/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="docs_files/animate.css/animate.xaringan.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+background-image: url("docs_files/images/sloth_faded.png")
+background-size: cover
+
+class: bottom, right
+
+## BUA 455 - Week 9
+
+### "HW 5 - Part 1 - Data Management Details" 
+
+&lt;br&gt;
+
+
+#### Penelope Pooler Eisenbies
+
+#### 2022-10-25
+
+[Wikipedia Sloth Page](https://en.wikipedia.org/wiki/Sloth)
+
+---
+
+### Project Meetings
+
+Thursday I will meet with each group after reading and providing feedback on proposal rough draft.
+
+- Order will be determined **MOSTLY** randomly.
+
+  - Schedule will be posted tomorrow.
+  
+  - If your class schedule or commitments mean that you can not be here exactly at 9:30 or you have to leave class early, please let me know **TODAY**.
+  
+&lt;br&gt;
+
+- Come prepared to answer questions about your proposal and data sources.
+  
+- Also come prepared with questions for me.
+  
+- I will provide suggestions about 
+  
+  - How to focus or expand your plans
+    
+  - Additional data sources for your project 
+    
+  - Suggestions for dashboard visualizations or summaries
+  that are good fit for your plan
+  
+- If needed, I will follow up with links to additional resources that will be helpful.
+    
+---
+    
+### Data Mgmt for HW 5 - Part 1 Dashboard 
+
+#### New Skills introduced last week
+
+- Using `ifelse` to create a categorical variable
+
+  - Can be combined with `factor` to create a factor variable
+  
+  - Factor variables are useful for plots, tables, and analyses
+  
+    - Character (text variable) are easier to work with when managing and manipulating data.
+    - Factor variables are preferred when plotting or presenting data in tables.
+  
+- Modifying and cleaning text variables
+
+  - `tolower` and `toupper`
+  
+  - `str_trim` (as well as `str_squish` and `str_pad`)
+  
+  - `gsub` and `ifelse`
+  
+---
+
+### Data Mgmt for HW 5 - Part 1 Dashboard 
+
+#### Review of Previous Data Mgmt skills used
+
+- `filter` and `select`
+  
+- `group_by` and `summarize`
+  
+- `pivot_wider` and `pivot_longer`
+
+&lt;br&gt;
+
+**Note:** Today we will cover how to use `pivot_wider` and `pivot_longer` to ***complete*** and incomplete dataset.
+
+In HW 5 - Part 1:
+
+- I provide R code in the dashboard template to complete incomplete
+
+- I also provide code to complete this task using `pivot_wider` and `pivot_longer` in an Optional R Script.
+  
+---
+  
+### Skills Covered in HW 5 - Part 1
+
+.pull-left[
+
+- **Panel 1 - Interactive Time Series Plots** 
+
+   - Review of importing and plotting xts datasets
+  
+   - `xts` stands for extensible time series
+  
+   - Multiple `xts` plot objects can be displayed using `hw_grid`
+  
+- You should also review (Not in Panel 1):
+
+   - Converting a `tibble` to an `xts` 
+  
+   - Converting an `xts` to a `tibble`
+  
+- New Skills
+
+   - [Using links to cite data sources](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown.pdf)
+
+
+]
+
+.pull-right[
+
+![](docs_files/images/owl.png)
+
+]
+
+---
+
+### Skills Covered in HW 5 - Part 1
+  
+- **Panel 2 - Grouped Stacked Barplots with Facets and Summary Table**
+
+  - Review of Previously Covered Skills
+  
+     - `pivot_longer`to reshape `nflx_mv` data
+    
+     - `ifelse` is used to simplify `release period` data
+
+     - `mutate` and `factor` is used to create two factor variables with specified levels
+    
+     - `filter` is used to subset the data to release periods with enough data.
+  
+  - New Skills - Panel 2 Plot is a grouped stack bar plot that uses a new option, `facet_grid`
+    
+     - `facet_grid(~release_period)` specifies side-by-side plots, 1 for each release period.
+    
+     - `scale_fill_brewer(palette = "Spectral")` allows the user to specify a color palette
+    
+     - Theme and palette options (Optional Extra Credit)
+    
+        - [ggtheme options](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/)
+      
+        - [Palette options](http://www.sthda.com/english/wiki/colors-in-r#use-wes-anderson-color-palettes) and another link with a [comprehensive list of palettes](https://github.com/EmilHvitfeldt/r-color-palettes)
+      
+---
+
+### Skills Covered in HW 5 - Part 1
+
+.pull-left[
+
+- **Panel 2 - More about the Bar Plot and Summary Table**
+    
+   - Be aware of how the barplot is specified in the `geom_barplot ` statement.
+  
+   - Stacked bars were used to save space.
+    
+- Panel 2 Table
+  
+   - The skills used to create to select and summarize data are review.
+    
+   - The table is presented using `kable` (also review).
+    
+   - Note that for projects, you can refine your table further, if needed, using commands from `kableExtra` package.
+
+
+]
+
+.pull-right[
+
+![](docs_files/images/beaver.png)
+
+]
+  
+
+  
+---
+
+### Skills Covered in HW 5 - Part 1
+
+.pull-left[
+
+- **Panel 3 - Area Plot**
+
+  - Useful new Skill:
+  
+     - summing across rows: `mutate(total = sum(c_across(comedies:kids)))`
+    
+     - sometimes used with `rowwise()` and `ungroup` but that is not needed here
+    
+  - Area Plot (Review)
+  
+     - Similar to line plot but uses `geom_area(aes(x = , y = , fill=))`
+    
+     - `scale_x_continuous(breaks = )` used to show all years in data
+    
+     - `scale_fill_brewer` used to specify same palette as Panel 2
+
+]
+
+.pull-right[
+
+![](docs_files/images/owl.png)
+]
+    
+
+    
+---
+
+### Week 9 In-class Exercises 
+
+- This short exercise demonstrates why a **complete** dataset with all combination levels is needed for area plots.
+
+- These steps are similar to the Optional R Script for HW 5 - Part 1 
+
+**`1.`** Import gt_cars dataset and examine the data
+
+
+```r
+my_gtcars &lt;- read_csv("gt_cars.csv", show_col_types = F) |&gt; glimpse()
+```
+
+```
+## Rows: 47
+## Columns: 15
+## $ mfr         &lt;chr&gt; "Ford", "Ferrari", "Ferrari", "Ferrari", "Ferrari", "Ferra…
+## $ model       &lt;chr&gt; "GT", "458 Speciale", "458 Spider", "458 Italia", "488 GTB…
+## $ year        &lt;dbl&gt; 2017, 2015, 2015, 2014, 2016, 2015, 2017, 2015, 2015, 2015…
+## $ trim        &lt;chr&gt; "Base Coupe", "Base Coupe", "Base", "Base Coupe", "Base Co…
+## $ bdy_style   &lt;chr&gt; "coupe", "coupe", "convertible", "coupe", "coupe", "conver…
+## $ hp          &lt;dbl&gt; 647, 597, 562, 562, 661, 553, 680, 652, 731, 949, 573, 545…
+## $ hp_rpm      &lt;dbl&gt; 6250, 9000, 9000, 9000, 8000, 7500, 8250, 8000, 8250, 9000…
+## $ trq         &lt;dbl&gt; 550, 398, 398, 398, 561, 557, 514, 504, 509, 664, 476, 436…
+## $ trq_rpm     &lt;dbl&gt; 5900, 6000, 6000, 6000, 3000, 4750, 5750, 6000, 6000, 6750…
+## $ mpg_c       &lt;dbl&gt; 11, 13, 13, 13, 15, 16, 12, 11, 11, 12, 21, 16, 11, 16, 12…
+## $ mpg_h       &lt;dbl&gt; 18, 17, 17, 17, 22, 23, 17, 16, 16, 16, 22, 22, 18, 20, 20…
+## $ drivetrain  &lt;chr&gt; "rwd", "rwd", "rwd", "rwd", "rwd", "rwd", "awd", "awd", "r…
+## $ trsmn       &lt;chr&gt; "7a", "7a", "7a", "7a", "7a", "7a", "7a", "7a", "7a", "7a"…
+## $ ctry_origin &lt;chr&gt; "United States", "Italy", "Italy", "Italy", "Italy", "Ital…
+## $ msrp        &lt;dbl&gt; 447000, 291744, 263553, 233509, 245400, 198973, 298000, 29…
+```
+
+---
+
+### Week 9 In-class Exercises 
+
+**`2.`** Select the following variables
+
+   - year, bdy_style (body style), drivetrain (drive train)
+
+**`3.`** Group data by year, body style, and drive train and count number of observations
+
+   - command to summarize number of observations is `n()`
+
+
+```r
+my_gtcars &lt;- read_csv("gt_cars.csv", show_col_types = F) |&gt;
+  select(year, bdy_style, drivetrain) |&gt;
+  group_by(year, bdy_style, drivetrain) |&gt;
+  summarize(n = n())                              #&gt;&gt; new command n()
+head(my_gtcars)                                   # incomplete dataset
+```
+
+```
+## # A tibble: 6 × 4
+## # Groups:   year, bdy_style [5]
+##    year bdy_style   drivetrain     n
+##   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;int&gt;
+## 1  2014 coupe       rwd            2
+## 2  2015 convertible rwd            2
+## 3  2015 coupe       awd            3
+## 4  2015 coupe       rwd            4
+## 5  2016 convertible rwd            2
+## 6  2016 coupe       awd            3
+```
+
+---
+### Week 9 In-class Exercises 
+
+**`4.`** Use pivot_wider to create a column for each drivetrain
+
+**`5.`** Replace missing values with 0
+
+
+```r
+my_gtcars &lt;- my_gtcars |&gt; 
+  pivot_wider(id_cols= c("year", "bdy_style"), names_from = drivetrain, values_from = n)
+my_gtcars[is.na(my_gtcars)] &lt;- 0  # convert missing values to 0
+head(my_gtcars)
+```
+
+```
+## # A tibble: 6 × 4
+## # Groups:   year, bdy_style [6]
+##    year bdy_style     rwd   awd
+##   &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;int&gt;
+## 1  2014 coupe           2     0
+## 2  2015 convertible     2     0
+## 3  2015 coupe           4     3
+## 4  2016 convertible     2     0
+## 5  2016 coupe          13     3
+## 6  2016 hatchback       0     2
+```
+
+---
+
+### Week 9 In-class Exercises (L15 - Q1)
+
+***PointSolutions Session ID: bua455s22***
+
+**`6.`** Sum across rows to total data from both drive trains
+
+.pull-left[
+
+- Q1: What is the command to sum across rows?
+   
+  - `drivetrain` will be dropped in next step; 
+  
+  - included here to demonstrate sum across
+   
+
+```r
+my_gtcars &lt;- my_gtcars |&gt;
+   mutate(total = sum(c_across(rwd:awd))) 
+```
+
+]
+
+.pull-right[
+
+
+```
+## # A tibble: 10 × 5
+## # Groups:   year, bdy_style [10]
+##     year bdy_style     rwd   awd total
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt; &lt;int&gt; &lt;int&gt;
+##  1  2014 coupe           2     0     2
+##  2  2015 convertible     2     0     2
+##  3  2015 coupe           4     3     7
+##  4  2016 convertible     2     0     2
+##  5  2016 coupe          13     3    16
+##  6  2016 hatchback       0     2     2
+##  7  2016 sedan           5     2     7
+##  8  2017 convertible     1     0     1
+##  9  2017 coupe           5     2     7
+## 10  2017 sedan           0     1     1
+```
+
+
+]
+
+---
+
+### Week 9 In-class Exercises (L15 - Q2 &amp; Q3)
+
+***PointSolutions Session ID: bua455s22***
+
+**`7.`** Select year, body style and total
+
+- Q2: How many observations do you have?
+   
+- Q3: If every body style was made in every year, how many observations would you have?
+
+  - There are 4 body styles and 4 years represented in these data
+  
+- **Also in this chunk:** Command to capitilize first letter of words in a string: `str_to_title`
+   
+
+```r
+my_gtcars &lt;- my_gtcars |&gt; select(year, bdy_style, total) |&gt;
+  mutate(bdy_style = str_to_title(bdy_style)) |&gt;    # Capitlize first letters
+  glimpse()
+```
+
+```
+## Rows: 10
+## Columns: 3
+## Groups: year, bdy_style [10]
+## $ year      &lt;dbl&gt; 2014, 2015, 2015, 2016, 2016, 2016, 2016, 2017, 2017, 2017
+## $ bdy_style &lt;chr&gt; "Coupe", "Convertible", "Coupe", "Convertible", "Coupe", "Ha…
+## $ total     &lt;int&gt; 2, 2, 7, 2, 16, 2, 7, 1, 7, 1
+```
+
+
+---
+
+**`8.`** Fill in dataset by using pivot_wider and then pivot longer
+
+.panelset[
+
+.panel[.panel-name[**Incomplete Data**]
+
+.pull-left[
+
+
+```
+## # A tibble: 10 × 3
+## # Groups:   year, bdy_style [10]
+##     year bdy_style   total
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;
+##  1  2014 Coupe           2
+##  2  2015 Convertible     2
+##  3  2015 Coupe           7
+##  4  2016 Convertible     2
+##  5  2016 Coupe          16
+##  6  2016 Hatchback       2
+##  7  2016 Sedan           7
+##  8  2017 Convertible     1
+##  9  2017 Coupe           7
+## 10  2017 Sedan           1
+```
+
+]
+
+.pull-right[
+
+![](docs_files/images/beaver.png)
+
+]
+
+
+]
+
+.panel[.panel-name[**`pivot_wider`**]
+
+Reshaping Data creates a 4x4 matrix with NAs
+
+
+```r
+(my_gtcars1 &lt;- my_gtcars |&gt;
+   pivot_wider(id_cols= year, names_from = bdy_style, values_from = total))
+```
+
+```
+## # A tibble: 4 × 5
+## # Groups:   year [4]
+##    year Coupe Convertible Hatchback Sedan
+##   &lt;dbl&gt; &lt;int&gt;       &lt;int&gt;     &lt;int&gt; &lt;int&gt;
+## 1  2014     2          NA        NA    NA
+## 2  2015     7           2        NA    NA
+## 3  2016    16           2         2     7
+## 4  2017     7           1        NA     1
+```
+
+]
+
+.panel[.panel-name[**`pivot_longer`**]
+
+.pull-left[
+
+Reshaping data back to long format keeps NAs, categories with no observations
+
+
+```r
+my_gtcars1 &lt;- my_gtcars1 |&gt;
+   pivot_longer(cols=Coupe:Sedan, 
+                names_to = "bdy_style", 
+                values_to = "total")
+```
+
+]
+
+.pull-right[
+
+
+```
+## # A tibble: 16 × 3
+## # Groups:   year [4]
+##     year bdy_style   total
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;
+##  1  2014 Coupe           2
+##  2  2014 Convertible    NA
+##  3  2014 Hatchback      NA
+##  4  2014 Sedan          NA
+##  5  2015 Coupe           7
+##  6  2015 Convertible     2
+##  7  2015 Hatchback      NA
+##  8  2015 Sedan          NA
+##  9  2016 Coupe          16
+## 10  2016 Convertible     2
+## 11  2016 Hatchback       2
+## 12  2016 Sedan           7
+## 13  2017 Coupe           7
+## 14  2017 Convertible     1
+## 15  2017 Hatchback      NA
+## 16  2017 Sedan           1
+```
+
+
+]
+
+
+
+]
+
+.panel[.panel-name[**Replace All NAs with 0**]
+
+.pull-left[
+
+These data values are number of observations so NAs can be replaced with 0s
+
+
+```r
+my_gtcars1[is.na(my_gtcars1)] &lt;- 0
+```
+
+]
+
+.pull-right[
+
+
+```
+## # A tibble: 16 × 3
+## # Groups:   year [4]
+##     year bdy_style   total
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;
+##  1  2014 Coupe           2
+##  2  2014 Convertible     0
+##  3  2014 Hatchback       0
+##  4  2014 Sedan           0
+##  5  2015 Coupe           7
+##  6  2015 Convertible     2
+##  7  2015 Hatchback       0
+##  8  2015 Sedan           0
+##  9  2016 Coupe          16
+## 10  2016 Convertible     2
+## 11  2016 Hatchback       2
+## 12  2016 Sedan           7
+## 13  2017 Coupe           7
+## 14  2017 Convertible     1
+## 15  2017 Hatchback       0
+## 16  2017 Sedan           1
+```
+
+]
+
+]
+
+.panel[.panel-name[**Complete Code**]
+
+.pull-left[
+
+Complete code is relatively short and efficient.
+
+- Factors should be created **AFTER** this process, if needed.
+
+
+```r
+my_gtcars1 &lt;- my_gtcars |&gt;
+  
+   pivot_wider(id_cols= year, 
+               names_from = bdy_style, 
+               values_from = total) |&gt;
+  
+   pivot_longer(cols=Coupe:Sedan, 
+                names_to = "bdy_style", 
+                values_to = "total")
+
+my_gtcars1[is.na(my_gtcars1)] &lt;- 0
+```
+
+]
+
+.pull-right[
+
+
+```
+## # A tibble: 16 × 3
+## # Groups:   year [4]
+##     year bdy_style   total
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;int&gt;
+##  1  2014 Coupe           2
+##  2  2014 Convertible     0
+##  3  2014 Hatchback       0
+##  4  2014 Sedan           0
+##  5  2015 Coupe           7
+##  6  2015 Convertible     2
+##  7  2015 Hatchback       0
+##  8  2015 Sedan           0
+##  9  2016 Coupe          16
+## 10  2016 Convertible     2
+## 11  2016 Hatchback       2
+## 12  2016 Sedan           7
+## 13  2017 Coupe           7
+## 14  2017 Convertible     1
+## 15  2017 Hatchback       0
+## 16  2017 Sedan           1
+```
+
+]
+
+]
+
+]
+
+
+
+---
+
+### Comparison of Complete and Incomplete Data Area Plots
+
+&lt;img src="docs_files/figure-html/area plot code-1.png" width="1080" /&gt;
+
+---
+
+background-image: url("docs_files/images/tired_panda_faded.png")
+background-size: cover
+
+
+.pull-left[
+
+### **Key Points from Week 9**
+
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph2[
+
+**Data Management Skills - Some Review and Some New**
+
+- Some Key New Data Management Skills:
+
+  - summarizing number of observations by category using `n()`
+  
+  - Using `sum(c_across())` to sum across rows
+  
+  - Knowing how to ***complete*** data that is incomplete 
+
+- HW 5 - Part 1 is due Wedneday, 11/2.
+
+- Next week 
+
+  - Practice questions for Quiz 2 (Quiz is on Thu. 11/10)
+  
+  - Managing and presenting geographic data in choropleth maps.
+
+]
+
+]
+
+.pull-right[
+
+
+.bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3[
+**You may submit an 'Engagement Question or Comment' about Week 9 lecture until Thursday, 10/25, at midnight on Blackboard.**
+]
+
+
+]
+
+    
+    
+    
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true,
+"keep_md": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
