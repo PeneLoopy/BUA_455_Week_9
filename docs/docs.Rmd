@@ -165,7 +165,7 @@ Thursday I will meet with each group after reading and providing feedback on pro
 
   - Schedule will be posted tomorrow.
   
-  - If your class schedule or commitments mean that you can not be here exactly at 9:30 or you have to leave class early, please let me know **TODAY**.
+  - If your class schedule or commitments mean that you can not be here exactly at 12:30 PM or you have to leave class early, please let me know **TODAY** by email.
   
 <br>
 
@@ -184,6 +184,58 @@ Thursday I will meet with each group after reading and providing feedback on pro
   
 - If needed, I will follow up with links to additional resources that will be helpful.
     
+---
+
+### Dashboard Inspiration - Approach with Caution
+
+There are many examples are resources available.  
+
+For example, this article about dashboard tips is on LinkedIn Learning
+
+You can Google data dashboard or data dashboard tips and quickly become overwhelmed.
+
+In addition, how and why people build dashboards affects the dashboard appearance and the creator's mindset.
+
+You (BUA 455) students are building a dashboard for TWO PURPOSES:
+
+1. Answer questions propose
+2. Display your learned data management skills that include, but are not limited to
+
+- acquiring data.
+- combining data from different sources.
+- managing data for different purpose
+- curating data in visual and tabular formats.
+- documenting your work product.
+
+Please keep these goals in mind as you write your final proposal.
+
+---
+
+### Collaborating on an R Project using Posit Cloud
+
+- A challenge of this course is collaborating on the actual R Project.
+
+- An advanced solution to this challenge is to use [Github](https://github.com/)
+
+  - I recommend exploring **Github**, if you are continuing in analytics.
+  - I host my slides for this course there.
+
+- Alternatively, [Posit Cloud](https://posit.cloud/) has developed a user friendly way to work on an R Project in a group online.
+
+  - [Posit](https://posit.co/) is the new name of the parent company of RStudio.
+  - Users sign up for a free account, but I think you have to pay **$5 per month** to work collaboratively in the cloud.  
+  - You can cancel subscription and download work at end of course.
+  - **Limitation(?): max of 5 people per team in Posit Cloud (not including me)**
+  - I have an instructor account and can join all groups (I think)
+
+**Caveats:**
+
+- I have not used Posit Cloud in a classroom setting yet.
+- For those of you in groups with multiple coders, this could be a great solution.
+- Posit Cloud allows for collaborative coding.
+- If your group wants to experiment with it, I am willing to help, but this is not required.
+
+
 ---
     
 ### Data Mgmt for HW 5 - Part 1 Dashboard 
@@ -304,7 +356,7 @@ In HW 5 - Part 1:
   
    - Stacked bars were used to save space.
     
-- Panel 2 Table
+- **Panel 2 Table**
   
    - The skills used to create to select and summarize data are review.
     
@@ -327,8 +379,6 @@ In HW 5 - Part 1:
 
 ### Skills Covered in HW 5 - Part 1
 
-.pull-left[
-
 - **Panel 3 - Area Plot**
 
   - Useful new Skill:
@@ -339,21 +389,14 @@ In HW 5 - Part 1:
     
   - Area Plot (Review)
   
-     - Similar to line plot but uses `geom_area(aes(x = , y = , fill=))`
+     - Similar to line plot but uses 
+       `geom_area(aes(x = , y = , fill=))`
     
      - `scale_x_continuous(breaks = )` used to show all years in data
     
      - `scale_fill_brewer` used to specify same palette as Panel 2
 
-]
 
-.pull-right[
-
-![](docs_files/images/owl.png)
-]
-    
-
-    
 ---
 
 ### Week 9 In-class Exercises 
@@ -405,7 +448,7 @@ head(my_gtcars)
 
 ---
 
-### Week 9 In-class Exercises (L15 - Q1)
+### Week 9 In-class Exercises (L16 - Q1)
 
 ***PointSolutions Session ID: bua455s22***
 
@@ -414,14 +457,17 @@ head(my_gtcars)
 .pull-left[
 
 - Q1: What is the command to sum across rows?
-   
-  - `drivetrain` will be dropped in next step; 
-  
-  - included here to demonstrate sum across
+
    
 ```{r sum accross rows to create total column}
-my_gtcars <- my_gtcars |>
+my_gtcars <- my_gtcars |>                      # simple version
    mutate(total = sum(c_across(rwd:awd))) 
+
+my_gtcars <- my_gtcars |>                      # more complete version
+   rowwise() |>
+   mutate(total = sum(c_across(rwd:awd))) |>   # rowwise() and ungroup() not always needed  
+   ungroup()
+
 ```
 
 ]
@@ -437,7 +483,7 @@ my_gtcars
 
 ---
 
-### Week 9 In-class Exercises (L15 - Q2 & Q3)
+### Week 9 In-class Exercises (L16 - Q2 & Q3)
 
 ***PointSolutions Session ID: bua455s22***
 
@@ -659,13 +705,13 @@ background-size: cover
   
   - Knowing how to ***complete*** data that is incomplete 
 
-- HW 5 - Part 1 is due Wedneday, 11/2.
+- HW 5 - Part 1 is due Friday, 3/31.
 
-- Next week 
+- Next week:
 
-  - Practice questions for Quiz 2 (Quiz is on Thu. 11/10)
-  
-  - Managing and presenting geographic data in choropleth maps.
+  - **Final Proposals are due on Mon. 3/27.**
+  - **Practice questions for Quiz 2 will be posted (Quiz is on Tues. 4/4).**
+  - Managing and presenting geographic data in choropleth maps (Not on Quiz 2).
 
 ]
 
@@ -675,7 +721,7 @@ background-size: cover
 
 
 .bg-azure.b--dark_cyan.ba.bw2.br3.shadow-5.ph3[
-**You may submit an 'Engagement Question or Comment' about Week 9 lecture until Thursday, 10/25, at midnight on Blackboard.**
+You may submit an 'Engagement Question' about each lecture until midnight on the day of the lecture. **A minimum of four submissions are required during the semester.**
 ]
 
 
