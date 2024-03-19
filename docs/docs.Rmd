@@ -1,5 +1,5 @@
 ---
-title: "BUA 455 - Week 9"
+title: "BUA 455 - Week 9 - Lecture 17"
 subtitle: "HW 5 - Part 1 - Data Management Details" 
 author: "Penelope Pooler Eisenbies"
 date: '`r Sys.Date()`'
@@ -137,12 +137,12 @@ xaringanExtra::use_animate_css()
 #xaringanExtra::use_animate_all("slide_up")
 ```
 
-background-image: url("docs_files/images/sloth_faded.png")
+background-image: url("img/sloth_faded.png")
 background-size: cover
 
 class: bottom, right
 
-## BUA 455 - Week 9
+## BUA 455 - Week 9 - Lecture 17
 
 ### "HW 5 - Part 1 - Data Management Details" 
 
@@ -157,19 +157,17 @@ class: bottom, right
 
 ---
 
-### Project Meetings
+### Project Meetings - Rough Drafts Proposals Due Thu. 3/21
 
-Thursday I will meet with each group after reading and providing feedback on proposal rough draft.
+Tuesday (3/26) I will meet with each group individually
 
 - Order will be determined **MOSTLY** randomly.
 
-  - Schedule will be posted tomorrow.
+  - Schedule will be posted Monday (3/25).
   
   - If your class schedule or commitments mean that you can not be here exactly at 12:30 PM or you have to leave class early, please let me know **TODAY** by email.
-  
-<br>
 
-- Come prepared to answer questions about your proposal and data sources.
+- Be prepared to answer questions about your proposal and data sources.
   
 - Also come prepared with questions for me.
   
@@ -189,8 +187,6 @@ Thursday I will meet with each group after reading and providing feedback on pro
 ### Dashboard Inspiration - Approach with Caution
 
 There are many examples are resources available.  
-
-For example, this article about dashboard tips is on LinkedIn Learning
 
 You can Google data dashboard or data dashboard tips and quickly become overwhelmed.
 
@@ -213,34 +209,31 @@ Please keep these goals in mind as you write your final proposal.
 
 ### Collaborating on an R Project using Posit Cloud
 
-- A challenge of this course is collaborating on the actual R Project.
+- Groups have been created on Posit Cloud
 
-- An advanced solution to this challenge is to use [Github](https://github.com/)
+- Group membership invitations will expire within 7 days
 
-  - I recommend exploring **Github**, if you are continuing in analytics.
-  - I host my slides for this course there.
+- Within the next 7 days:
 
-- Alternatively, [Posit Cloud](https://posit.cloud/) has developed a user friendly way to work on an R Project in a group online.
+   - Create a [Posit Cloud Student Account](https://posit.cloud/plans)
+   
+   - Accept Invitation
+   
+- Create multiple projects with your Workspace
 
-  - [Posit](https://posit.co/) is the new name of the parent company of RStudio.
-  - Users sign up for a free account, but I think you have to pay **$5 per month** to work collaboratively in the cloud.  
-  - You can cancel subscription and download work at end of course.
-  - **Limitation(?): max of 5 people per team in Posit Cloud (not including me)**
-  - I have an instructor account and can join all groups (I think)
+  - Two laptops cannot edit same project simultaneously
+  
+  - Collaboration is still doable but it's not as seamless as Google Docs
+  
+- Sukhad (Course TA) and I are members of all groups so we can help you as needed.
 
-**Caveats:**
-
-- I have not used Posit Cloud in a classroom setting yet.
-- For those of you in groups with multiple coders, this could be a great solution.
-- Posit Cloud allows for collaborative coding.
-- If your group wants to experiment with it, I am willing to help, but this is not required.
-
+- Demo Using HW 5.1
 
 ---
     
 ### Data Mgmt for HW 5 - Part 1 Dashboard 
 
-#### New Skills introduced last week
+#### New Skills Introduced Before Break
 
 - Using `ifelse` to create a categorical variable
 
@@ -312,7 +305,7 @@ In HW 5 - Part 1:
 
 .pull-right[
 
-![](docs_files/images/owl.png)
+![](img/owl.png)
 
 ]
 
@@ -369,7 +362,7 @@ In HW 5 - Part 1:
 
 .pull-right[
 
-![](docs_files/images/beaver.png)
+![](img/beaver.png)
 
 ]
   
@@ -448,9 +441,9 @@ head(my_gtcars)
 
 ---
 
-### Week 9 In-class Exercises (L16 - Q1)
+### Week 9 In-class Exercises (L17 - Q1)
 
-***PointSolutions Session ID: bua455s22***
+***PointSolutions Session ID: bua455s24***
 
 **`6.`** Sum across rows to total data from both drive trains
 
@@ -483,9 +476,9 @@ my_gtcars
 
 ---
 
-### Week 9 In-class Exercises (L16 - Q2 & Q3)
+### Week 9 In-class Exercises (L17 - Q2 & Q3)
 
-***PointSolutions Session ID: bua455s22***
+***PointSolutions Session ID: bua455s24***
 
 **`7.`** Select year, body style and total
 
@@ -525,7 +518,7 @@ my_gtcars
 
 .pull-right[
 
-![](docs_files/images/beaver.png)
+![](img/beaver.png)
 
 ]
 
@@ -685,7 +678,7 @@ grid.arrange(gt_car_area_plot, gt_car_area_plot1, ncol=2)
 
 ---
 
-background-image: url("docs_files/images/tired_panda_faded.png")
+background-image: url("img/tired_panda_faded.png")
 background-size: cover
 
 
@@ -697,20 +690,18 @@ background-size: cover
 
 **Data Management Skills - Some Review and Some New**
 
-- Some Key New Data Management Skills:
-
   - summarizing number of observations by category using `n()`
   
   - Using `sum(c_across())` to sum across rows
   
   - Knowing how to ***complete*** data that is incomplete 
+  
+- Next Week
 
-- HW 5 - Part 1 is due Friday, 3/31.
+  - HW 5 - Part 1 is due Wednesday, 3/27.
+  
+  - **Practice questions for Quiz 2 will be posted by Thursday 3/28 (Quiz is on Thu. 4/4).**
 
-- Next week:
-
-  - **Final Proposals are due on Mon. 3/27.**
-  - **Practice questions for Quiz 2 will be posted (Quiz is on Tues. 4/4).**
   - Managing and presenting geographic data in choropleth maps (Not on Quiz 2).
 
 ]
